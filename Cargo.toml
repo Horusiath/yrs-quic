@@ -1,0 +1,28 @@
+[package]
+name = "yrs-quic"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+thiserror = "1.0"
+yrs = { version = "0.17", features = ["weak"] }
+y-sync = { version = "0.4.0", features = ["net"] }
+quinn = { version = "0.10", features = ["rustls"] }
+tokio = { version = "1.35", features = ["macros", "net", "sync"] }
+tokio-util = { version = "0.7", features = ["codec"] }
+bytes = "1.5"
+rcgen = { version = "0.12" }
+async-trait = "0.1.77"
+async-stream = { version = "0.3", features = [] }
+tracing = { version = "0.1.40", features = ["log-always"] }
+futures-util = { version = "0.3.30", features = ["sink"] }
+uuid = { version = "1.7.0", features = ["v4"] }
+rand = "0.7"
+rustls = { version = "0.21", features = ["quic"] }
+
+zeroconf = { version = "0.13", optional = true }
+
+[features]
+mdns = ["dep:zeroconf"]
